@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <h2>Contact app</h2>
+  </div>
+  <a role="button" class="btn btn-primary" style="margin-top: 10px; margin-bottom: 10px; color: white;"
+    routerLink="/new">
+    Add new contact
+  </a>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>List of contacts</h2>
+    </div>
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone number</th>
+            <th scope="col">Date created</th>
+            <th scope="col">Date updated</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let contact of contacts; let i = index" [attr.data-index]="i">
+            <th scope="row">{{ i+1 }}</th>
+            <td>
+              {{ contact.firstName }}
+            </td>
+            <td>
+              {{ contact.lastName }}
+            </td>
+            <td>
+              {{ contact.email }}
+            </td>
+            <td>
+              {{ contact.phoneNumber }}
+            </td>
+            <td>
+              {{ contact.createdDate | date :'dd/MM/yyyy HH:mm:ss' }}
+            </td>
+            <td>
+              {{ contact.lastUpdated | date :'dd/MM/yyyy HH:mm:ss' }}
+            </td>
+            <td>
+              <a class="btn btn-warning" role="button" routerLink="/edit/{{contact.id}}" style="margin-right: 10px;">
+                Update
+              </a>
+              <a class="btn btn-danger" role="button" (click) = "deleteContact(contact.id)">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="d-flex justify-content-between p-2">
+        <ngb-pagination [collectionSize]="theTotalElements" [(page)]="thePageNumber" [pageSize]="thePageSize"
+          [boundaryLinks]="true" [maxSize]="5" (pageChange)="listContacts()">
+        </ngb-pagination>
+
+        <select class="custom-select" style="width: auto" (change)="updatePageSize($event.target.value)">
+          <option value="5">5 items per page</option>
+          <option value="10" selected="true">10 items per page</option>
+          <option value="15">15 items per page</option>
+          <option value="20">20 items per page</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
