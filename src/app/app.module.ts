@@ -14,9 +14,9 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 const routes: Routes = [
   { path: 'new', component: ContactFormComponent },
   { path: 'edit/:id', component: ContactFormComponent },
-  { path: 'contacts', component: ContactListComponent },
-  { path: '', redirectTo: '/contacts', pathMatch: 'full' },
-  { path: '**', redirectTo: '/contacts', pathMatch: 'full' },
+  { path: '/', component: ContactListComponent },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 @NgModule({
   declarations: [
