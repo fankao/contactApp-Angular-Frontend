@@ -14,7 +14,7 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 const routes: Routes = [
   { path: 'new', component: ContactFormComponent },
   { path: 'edit/:id', component: ContactFormComponent },
-  { path: '/', component: ContactListComponent },
+  { path: '', component: ContactListComponent },
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
